@@ -3,33 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Maker</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Professionele CV Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .cv-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .cv-section {
+            margin-bottom: 30px;
+        }
+
+        .cv-section .education-entry,
+        .cv-section .experience-entry {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="cv-form-container">
-        <h1>CV Maker</h1>
-        <form id="cvForm">
-            <label for="name">Naam:</label>
-            <input type="text" id="name" name="name" required>
+        <h1>Maak je CV</h1>
+        
+        <div class="cv-section">
+            <h2>Persoonlijke Gegevens</h2>
+            <div class="form-group">
+                <label for="name">Naam</label>
+                <input type="text" id="name" placeholder="Naam" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefoonnummer</label>
+                <input type="tel" id="phone" placeholder="Telefoonnummer" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Adres</label>
+                <input type="text" id="address" placeholder="Adres" required>
+            </div>
+        </div>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+        <div class="cv-section">
+            <h2>Opleidingen</h2>
+            <div id="education-list">
+                <div class="education-entry form-group">
+                    <input type="text" class="school" placeholder="School/Instelling" required>
+                    <input type="text" class="degree" placeholder="Opleiding" required>
+                    <input type="date" class="education-start" placeholder="Startdatum" required>
+                    <input type="date" class="education-end" placeholder="Einddatum" required>
+                </div>
+            </div>
+            <button type="button" onclick="addEducation()">Opleiding toevoegen</button>
+        </div>
 
-            <label for="education">Opleiding:</label>
-            <input type="text" id="education" name="education" required>
+        <div class="cv-section">
+            <h2>Werkervaring</h2>
+            <div id="experience-list">
+                <div class="experience-entry form-group">
+                    <input type="text" class="company" placeholder="Bedrijf" required>
+                    <input type="text" class="role" placeholder="Functie" required>
+                    <input type="date" class="start" placeholder="Startdatum" required>
+                    <input type="date" class="end" placeholder="Einddatum" required>
+                    <input type="checkbox" class="present"> Heden
+                </div>
+            </div>
+            <button type="button" onclick="addExperience()">Werkervaring toevoegen</button>
+        </div>
 
-            <label for="experience">Werkervaring:</label>
-            <textarea id="experience" name="experience" required></textarea>
+        <div class="cv-section">
+            <h2>Vaardigheden</h2>
+            <div class="form-group">
+                <textarea id="skills" placeholder="Vaardigheden" required></textarea>
+            </div>
+        </div>
 
-            <label for="skills">Vaardigheden:</label>
-            <textarea id="skills" name="skills" required></textarea>
-
-            <button type="button" onclick="generatePDF()">Download als PDF</button>
-        </form>
+        <button type="button" onclick="generatePDF()">Download als PDF</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        const { jsPDF } = window.jspdf;
+
+        // Functie om een opleiding toe te voegen
+        function addEducation() {
+            const educationList = document.getElementById('education-list');
+            const newEntry = document.createElement('div');
+            newEntry.classList.add('education-entry', 'form-group');
+            newEntry.innerHTML = `
+                <input type="text" class="school" placeholder="School/Instelling" required>
+                <input type="text" class="degree" placeholder="Opleiding" required>
+                <input type="date" class="education-start" placeholder="Startdatum" required>
+                <input type="date" class="education-end" placeholder="Einddatum" required>
+            `;
+            educationList.appendChild(newEntry);
+        }
+
+        // Functie om werkervaring toe te voegen
+        function addExperience() {
+            const experienceList = document.getElementById('experience-list');
+            const newEntry = document.createElement('div');
+            newEntry.classList.add('experience-entry', 'form-group');
+            newEntry.innerHTML = `
+                <input type="text" class="company" placeholder="Bedrijf" required>
+                <input type="text" class="role" placeholder="Functie" required>
+                <input type="date" class="start" placeholder="Startdatum" required>
+                <input type="date" class="end" placeholder="Einddatum" required>
+                <input type="checkbox" class="present"> Heden
+            `;
+            experienceList.appendChild(newEntry);
+        }
+
+        // PDF genereren functie
+        function generatePDF() {
+            const doc = new jsPDF();
+            let yPosition = 20;
+
+            // Persoonlijke informatie
+            doc.setFontSize(18);
+            doc.text('Curriculum Vitae', 10, yPosition);
+            yPosition += 20;
+
+            doc.setFontSize(14);
+            doc.text('Persoonlijke Gegevens', 10, yPosition);
+            yPosition += 10;
+
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const phone = document.querySelector('#phone').value;
+            const address = document.querySelector('#address').value;
+
+            doc.setFontSize(12);
+            doc.text(`Naam: ${name}`, 10, yPosition);
+            yPosition += 10;
+            doc.text(`E-mail: ${email}`, 10, yPosition);
+            yPosition += 10;
+            doc.text(`Telefoon: ${phone}`, 10, yPosition);
+            yPosition += 10;
+            doc.text(`Adres: ${address}`, 10, yPosition);
+            yPosition += 20;
+
+            // Opleidingen
+            doc.setFontSize(14);
+            doc.text('Opleidingen', 10, yPosition);
+            yPosition += 10;
+
+            const educationEntries = document.querySelectorAll('.education-entry');
+            educationEntries.forEach((entry, index) => {
+                const school = entry.querySelector('.school').value;
+                const degree = entry.querySelector('.degree').value;
+                const educationStart = entry.querySelector('.education-start').value;
+                const educationEnd = entry.querySelector('.education-end').value;
+
+                doc.setFontSize(12);
+                doc.text(`${degree} - ${school}`, 10, yPosition);
+                yPosition += 10;
+                doc.text(`Start: ${educationStart} - Eind: ${educationEnd}`, 10, yPosition);
+                yPosition += 15;
+            });
+
+            // Werkervaring
+            doc.setFontSize(14);
+            doc.text('Werkervaring', 10, yPosition);
+            yPosition += 10;
+
+            const experiences = document.querySelectorAll('.experience-entry');
+            experiences.forEach((entry, index) => {
+                const company = entry.querySelector('.company').value;
+                const role = entry.querySelector('.role').value;
+                const start = entry.querySelector('.start').value;
+                const end = entry.querySelector('.end').value;
+                const present = entry.querySelector('.present').checked ? 'Heden' : '';
+
+                doc.setFontSize(12);
+                doc.text(`${role} - ${company}`, 10, yPosition);
+                yPosition += 10;
+                doc.text(`Start: ${start} - Eind: ${end} ${present}`, 10, yPosition);
+                yPosition += 15;
+            });
+
+            // Vaardigheden
+            const skills = document.querySelector('#skills').value;
+            doc.setFontSize(14);
+            doc.text('Vaardigheden', 10, yPosition);
+            yPosition += 10;
+            doc.setFontSize(12);
+            doc.text(skills, 10, yPosition);
+            yPosition += 20;
+
+            // PDF opslaan
+            doc.save('cv.pdf');
+        }
+    </script>
 </body>
 </html>
