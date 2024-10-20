@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cv-form-container">
+        <h1>CV Maker</h1>
+        <form id="cvForm">
+            <label for="name">Naam:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="education">Opleiding:</label>
+            <input type="text" id="education" name="education" required>
+
+            <label for="experience">Werkervaring:</label>
+            <textarea id="experience" name="experience" required></textarea>
+
+            <label for="skills">Vaardigheden:</label>
+            <textarea id="skills" name="skills" required></textarea>
+
+            <button type="button" onclick="generatePDF()">Download als PDF</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
