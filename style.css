@@ -1,17 +1,17 @@
 body {
     background-color: #2f303b;
 }
-.bovenkant h1{
-    color: #ffff;
-    font-family: sans-serif;
+.bovenkant {
     text-align: center;
-    margin-top: 80px;
+    color: white;
+    margin-top: 50px;
+}
+.bovenkant h1{
+    font-family: sans-serif;
     font-size: 70px;
 }
 .bovenkant p{
-    color: #ffff;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
     font-size: 27px;
     margin: 600px;
     margin-top: 0px;
