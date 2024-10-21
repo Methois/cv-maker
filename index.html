@@ -1,238 +1,35 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Maker</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 20px;
-        }
-        .header h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 0;
-        }
-        .header img {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-        }
-        .section {
-            margin-top: 30px;
-        }
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 1.2em;
-        }
-        .section-content p {
-            margin: 0;
-            line-height: 1.5;
-        }
-        .contact-info, .profile, .skills, .experience, .education {
-            display: inline-block;
-            width: 48%;
-            vertical-align: top;
-        }
-        .contact-info ul, .skills ul {
-            list-style: none;
-            padding: 0;
-        }
-        .contact-info ul li, .skills ul li {
-            margin-bottom: 8px;
-        }
-        .experience p, .education p {
-            margin-bottom: 15px;
-        }
-        .skills ul li span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: black;
-            margin-right: 5px;
-        }
-        .form-container {
-            margin-top: 50px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<div class="bovenkant">
+<h1>CV Generator</h1>
+<p>CV Generator is a simple, Open-source tool designed to help you create a standout resume quickly. Whether you're starting your career or looking to update your current CV, our easy-to-use platform lets you cusomize your document to showcase your skills and experience in the best light! Get noticed by employers and take the next step in your career</p>
+</div>
 <body>
-    <div class="container" id="cv-content">
-        <!-- CV Template -->
-        <div class="header">
-            <h1 id="cv-name">Naam</h1>
-            <img id="cv-profile-picture" src="profile_picture.png" alt="Profielfoto">
+    <div class="choose">
+        <h1>Choose the CV you like and customize it!</h1>
+    </div>
+    <div class="cv-templates">
+        <div class="cv-template">
+            <a href="cv1/index.html">
+                <img src="cv1.png" alt="Template 1">
+            </a>
         </div>
-
-        <div class="section contact-info">
-            <h2 class="section-title">Contact</h2>
-            <ul>
-                <li id="cv-phone">Telefoonnummer</li>
-                <li id="cv-email">E-mail</li>
-                <li id="cv-address">Adres</li>
-                <li id="cv-linkedin">LinkedIn</li>
-            </ul>
+        <div class="cv-template">
+            <a href="cv1/index.html">
+                <img src="cv1.png" alt="Template 1">
+            </a>
         </div>
-
-        <div class="section profile">
-            <h2 class="section-title">Profiel</h2>
-            <p id="cv-profile">Je profieltekst komt hier.</p>
-        </div>
-
-        <div class="section education">
-            <h2 class="section-title">Opleiding</h2>
-            <div id="cv-education">Opleidingsinformatie</div>
-        </div>
-
-        <div class="section experience">
-            <h2 class="section-title">Werkervaring</h2>
-            <div id="cv-experience">Werkervaringinformatie</div>
-        </div>
-
-        <div class="section skills">
-            <h2 class="section-title">Vaardigheden</h2>
-            <ul id="cv-skills">
-                <li>Vaardigheid 1</li>
-                <li>Vaardigheid 2</li>
-            </ul>
+        <div class="cv-template">
+            <a href="cv1/index.html">
+                <img src="cv1.png" alt="Template 1">
+            </a>
         </div>
     </div>
-
-    <!-- Formulier -->
-    <div class="form-container">
-        <h2>Vul je gegevens in</h2>
-
-        <label for="name">Naam:</label>
-        <input type="text" id="name" placeholder="Voer je naam in">
-
-        <label for="tussenvoegsel">Tussenvoegsel:</label>
-        <input type="text" id="tussenvoegsel" placeholder="Voer je tussenvoegsel in (indien van toepassing)">
-
-        <label for="achternaam">Achternaam:</label>
-        <input type="text" id="achternaam" placeholder="Voer je achternaam in">
-
-        <label for="phone">Telefoon:</label>
-        <input type="text" id="phone" placeholder="Voer je telefoonnummer in">
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" placeholder="Voer je e-mailadres in">
-
-        <label for="address">Adres:</label>
-        <input type="text" id="address" placeholder="Voer je adres in">
-
-        <label for="linkedin">LinkedIn:</label>
-        <input type="text" id="linkedin" placeholder="Voer je LinkedIn-profiel in">
-
-        <label for="profile">Profiel:</label>
-        <textarea id="profile" placeholder="Beschrijf jezelf kort"></textarea>
-
-        <label for="education">Opleidingen:</label>
-        <div id="education-list">
-            <input type="text" class="education-input" placeholder="Voer je opleiding in">
-            <button type="button" onclick="addEducation()">Voeg opleiding toe</button>
-        </div>
-
-        <label for="experience">Werkervaring:</label>
-        <div id="experience-list">
-            <input type="text" class="experience-input" placeholder="Voer je werkervaring in">
-            <button type="button" onclick="addExperience()">Voeg werkervaring toe</button>
-        </div>
-
-        <label for="skills">Vaardigheden:</label>
-        <div id="skills-list">
-            <input type="text" class="skills-input" placeholder="Voer een vaardigheid in">
-            <button type="button" onclick="addSkill()">Voeg vaardigheid toe</button>
-        </div>
-
-        <label for="profile-picture">Profielfoto:</label>
-        <input type="file" id="profile-picture" accept="image/*">
-
-        <button onclick="generateCV()">Genereer CV</button>
-        <button onclick="downloadPDF()">Download als PDF</button>
-    </div>
-
-    <script>
-        function addEducation() {
-            const educationInput = document.querySelector('.education-input');
-            const educationList = document.getElementById('cv-education');
-            const newEducation = document.createElement('p');
-            newEducation.textContent = educationInput.value;
-            educationList.appendChild(newEducation);
-            educationInput.value = ''; // Reset the input
-        }
-
-        function addExperience() {
-            const experienceInput = document.querySelector('.experience-input');
-            const experienceList = document.getElementById('cv-experience');
-            const newExperience = document.createElement('p');
-            newExperience.textContent = experienceInput.value;
-            experienceList.appendChild(newExperience);
-            experienceInput.value = ''; // Reset the input
-        }
-
-        function addSkill() {
-            const skillInput = document.querySelector('.skills-input');
-            const skillsList = document.getElementById('cv-skills');
-            const newSkill = document.createElement('li');
-            newSkill.textContent = skillInput.value;
-            skillsList.appendChild(newSkill);
-            skillInput.value = ''; // Reset the input
-        }
-
-        function generateCV() {
-            const name = document.getElementById('name').value;
-            const tussenvoegsel = document.getElementById('tussenvoegsel').value;
-            const achternaam = document.getElementById('achternaam').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const address = document.getElementById('address').value;
-            const linkedin = document.getElementById('linkedin').value;
-            const profile = document.getElementById('profile').value;
-
-            // Set the CV fields
-            document.getElementById('cv-name').innerText = `${name} ${tussenvoegsel} ${achternaam}`;
-            document.getElementById('cv-phone').innerText = `Telefoon: ${phone}`;
-            document.getElementById('cv-email').innerText = `E-mail: ${email}`;
-            document.getElementById('cv-address').innerText = `Adres: ${address}`;
-            document.getElementById('cv-linkedin').innerText = `LinkedIn: ${linkedin}`;
-            document.getElementById('cv-profile').innerText = profile;
-        }
-
-        function downloadPDF() {
-            const element = document.getElementById('cv-content');
-            html2pdf()
-                .from(element)
-                .save();
-        }
-    </script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+body {
+    background-color: #2f303b;
+}
+.bovenkant h1{
+    color: #ffff;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 80px;
+    font-size: 70px;
+}
+.bovenkant p{
+    color: #ffff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 27px;
+    margin: 600px;
+    margin-top: 0px;
+}
+.choose h1 {
+    color: white;
+    text-align: center;
+    margin-top: -400px;
+}
+.cv-templates {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+.cv-template{
+    transition: transform 0.3s ease;
+}
+
+.cv-template img {
+    width: 450px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.cv-template:hover {
+    transform: scale(1.05);
+}
