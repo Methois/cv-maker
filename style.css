@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -15,6 +16,103 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+/* Responsiveness voor laptops (bijvoorbeeld 1024px breed) */
+@media (max-width: 1024px) {
+    .navbar-links {
+        gap: 20px;
+    }
+
+    .navbar-item {
+        font-size: 24px;
+    }
+
+    .bovenkant h1 {
+        font-size: 50px;
+    }
+
+    .bovenkant p {
+        font-size: 18px;
+        width: 90%;
+    }
+
+    .cv-template img {
+        width: 300px;
+    }
+}
+
+/* Responsiveness voor tablets en kleine laptops (bijvoorbeeld 768px breed) */
+@media (max-width: 768px) {
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-item {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .github-link {
+        margin-right: 0;
+    }
+
+    .bovenkant h1 {
+        font-size: 40px;
+    }
+
+    .bovenkant p {
+        font-size: 16px;
+    }
+
+    .cv-template img {
+        width: 250px;
+    }
+}
+
+/* Responsiveness voor mobiele telefoons (bijvoorbeeld 480px breed) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navbar-item {
+        font-size: 18px;
+    }
+
+    .github-box {
+        padding: 5px 10px;
+        border-radius: 20px;
+    }
+
+    .bovenkant h1 {
+        font-size: 30px;
+    }
+
+    .bovenkant p {
+        font-size: 14px;
+        width: 90%;
+    }
+
+    .cv-button {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+
+    .cv-template img {
+        width: 180px;
+    }
+
+    .choose h1 {
+        margin-top: 100px;
+    }
 }
 
 .navbar-links {
@@ -85,7 +183,7 @@ body {
 }
 
 .makecv {
-    margin-top: 150px;
+    margin-top: 170px;
     text-align: center;
 }
 
@@ -109,7 +207,7 @@ body {
 .choose h1 {
     color: white;
     text-align: center;
-    margin-top: 950px;
+    margin-top: 550px;
 }
 
 .cv-templates {
@@ -132,4 +230,7 @@ body {
 
 .cv-template:hover {
     transform: scale(1.05);
+}
+.oranje {
+    color: #ff6600;
 }
