@@ -21,7 +21,7 @@
         </div>
     </nav>
 
-    <div class="cv-form">
+    <div class="cv-container">
         <!-- Persoonlijke informatie -->
         <div class="section">
             <h2>Persoonlijke Informatie</h2>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <!-- Opleiding en Vaardigheden -->
+        <!-- Opleidingen en Vaardigheden -->
         <div class="section">
             <h2>Opleidingen & Vaardigheden</h2>
             <div class="education-skills">
@@ -57,7 +57,7 @@
                     </div>
                     <div id="skill-list"></div>
                 </div>
-
+                
                 <div class="education">
                     <h3>Opleidingen</h3>
                     <div class="add-education">
@@ -65,7 +65,8 @@
                         <input type="text" placeholder="Opleiding">
                         <input type="month" placeholder="Begin maand & jaar">
                         <input type="month" placeholder="Eind maand & jaar">
-                        <input type="checkbox" id="current-education"> Huidig
+                        <input type="checkbox" id="current-education">
+                        <label for="current-education">Huidig</label>
                         <button onclick="addEducation()">Voeg toe</button>
                     </div>
                     <div id="education-list"></div>
@@ -73,7 +74,7 @@
             </div>
         </div>
 
-        <!-- Profiel tekst -->
+        <!-- Profiel Tekst -->
         <div class="section">
             <h2>Profiel Tekst</h2>
             <textarea placeholder="Schrijf hier je profieltekst..."></textarea>
@@ -87,7 +88,8 @@
                 <input type="text" placeholder="Functie">
                 <input type="month" placeholder="Startdatum">
                 <input type="month" placeholder="Einddatum">
-                <input type="checkbox" id="current-job"> Huidig
+                <input type="checkbox" id="current-job">
+                <label for="current-job">Huidig</label>
                 <textarea placeholder="Beschrijf de functie..."></textarea>
                 <button onclick="addJob()">Voeg functie toe</button>
             </div>
