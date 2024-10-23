@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Formulier</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-links">
@@ -26,15 +28,23 @@
         <div class="section">
             <h2>Persoonlijke Informatie</h2>
             <div class="personal-info">
-                <input type="text" placeholder="Naam">
-                <input type="text" placeholder="Tussenvoegsel">
-                <input type="text" placeholder="Achternaam">
-                <input type="text" placeholder="Functie Titel">
-                <input type="tel" placeholder="Telefoonnummer">
-                <input type="email" placeholder="E-mail">
-                <input type="text" placeholder="Straatnaam">
-                <input type="text" placeholder="Huisnummer">
-                <input type="text" placeholder="Stad">
+                <input type="text" placeholder="Naam" id="naam">
+                <span class="error" id="error-naam"></span>
+                <input type="text" placeholder="Tussenvoegsel" id="tussenvoegsel">
+                <input type="text" placeholder="Achternaam" id="achternaam">
+                <span class="error" id="error-achternaam"></span>
+                <input type="text" placeholder="Functie Titel" id="functie-titel">
+                <span class="error" id="error-functie"></span>
+                <input type="tel" placeholder="Telefoonnummer" id="telefoon">
+                <span class="error" id="error-telefoon"></span>
+                <input type="email" placeholder="E-mail" id="email">
+                <span class="error" id="error-email"></span>
+                <input type="text" placeholder="Straatnaam" id="straat">
+                <span class="error" id="error-straat"></span>
+                <input type="text" placeholder="Huisnummer" id="huisnummer">
+                <span class="error" id="error-huisnummer"></span>
+                <input type="text" placeholder="Stad" id="stad">
+                <span class="error" id="error-stad"></span>
             </div>
         </div>
 
@@ -45,7 +55,7 @@
                 <div class="skills">
                     <h3>Vaardigheden</h3>
                     <div class="add-skill">
-                        <input type="text" placeholder="Vaardigheid">
+                        <input type="text" placeholder="Vaardigheid" id="vaardigheid">
                         <select id="skill-stars">
                             <option value="1">⭐</option>
                             <option value="2">⭐⭐</option>
@@ -56,20 +66,22 @@
                         <button onclick="addSkill()">Voeg toe</button>
                     </div>
                     <div id="skill-list"></div>
+                    <span class="error" id="error-vaardigheden"></span>
                 </div>
-                
+
                 <div class="education">
                     <h3>Opleidingen</h3>
                     <div class="add-education">
-                        <input type="text" placeholder="School/Instelling">
-                        <input type="text" placeholder="Opleiding">
-                        <input type="month" placeholder="Begin maand & jaar">
-                        <input type="month" placeholder="Eind maand & jaar">
+                        <input type="text" placeholder="School/Instelling" id="opleiding-school">
+                        <input type="text" placeholder="Opleiding" id="opleiding-titel">
+                        <input type="month" placeholder="Begin maand & jaar" id="opleiding-begin">
+                        <input type="month" placeholder="Eind maand & jaar" id="opleiding-eind">
                         <input type="checkbox" id="current-education">
                         <label for="current-education">Huidig</label>
                         <button onclick="addEducation()">Voeg toe</button>
                     </div>
                     <div id="education-list"></div>
+                    <span class="error" id="error-opleidingen"></span>
                 </div>
             </div>
         </div>
@@ -77,26 +89,28 @@
         <!-- Profiel Tekst -->
         <div class="section">
             <h2>Profiel Tekst</h2>
-            <textarea placeholder="Schrijf hier je profieltekst..."></textarea>
+            <textarea placeholder="Schrijf hier je profieltekst..." id="profieltekst"></textarea>
+            <span class="error" id="error-profieltekst"></span>
         </div>
 
         <!-- Werk Ervaring -->
         <div class="section">
             <h2>Werk Ervaring</h2>
             <div class="add-job">
-                <input type="text" placeholder="Werkgever">
-                <input type="text" placeholder="Functie">
-                <input type="month" placeholder="Startdatum">
-                <input type="month" placeholder="Einddatum">
+                <input type="text" placeholder="Werkgever" id="werkgever">
+                <input type="text" placeholder="Functie" id="werk-functie">
+                <input type="month" placeholder="Startdatum" id="werk-startdatum">
+                <input type="month" placeholder="Einddatum" id="werk-einddatum">
                 <input type="checkbox" id="current-job">
                 <label for="current-job">Huidig</label>
-                <textarea placeholder="Beschrijf de functie..."></textarea>
+                <textarea placeholder="Beschrijf de functie..." id="werk-beschrijving"></textarea>
                 <button onclick="addJob()">Voeg functie toe</button>
             </div>
             <div id="job-list"></div>
+            <span class="error" id="error-werkervaring"></span>
         </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
