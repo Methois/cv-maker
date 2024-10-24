@@ -101,10 +101,11 @@ function validateForm() {
 
     // Als alles goed is, kan je de CV downloaden
     if (isValid) {
-        alert("CV kan nu gedownload worden!");
-        // Voeg hier de downloadfunctionaliteit toe
+        handleDownload(naam, achternaam);
+    } else {
+        console.log("Formulier is ongeldig.");
     }
-}
+}    
 
 // Functie om email validatie te doen
 function validateEmail(email) {
@@ -112,7 +113,7 @@ function validateEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-// Voeg hier je bestaande functies voor het toevoegen van vaardigheden, opleidingen en werkervaring toe
+// Functie om vaardigheden toe te voegen
 function addSkill() {
     const skill = document.getElementById("vaardigheid").value.trim();
     const stars = document.getElementById("skill-stars").value;
@@ -126,6 +127,7 @@ function addSkill() {
     document.getElementById("error-vaardigheden").textContent = ""; // Reset foutmelding
 }
 
+// Functie om opleidingen toe te voegen
 function addEducation() {
     const school = document.getElementById("opleiding-school").value.trim();
     const titel = document.getElementById("opleiding-titel").value.trim();
@@ -133,7 +135,7 @@ function addEducation() {
     const eind = document.getElementById("opleiding-eind").value.trim();
     const current = document.getElementById("current-education").checked;
 
-    if (school === "" || titel === "" || (current === false && begin === "" && eind === "")) {
+    if (school === "" || titel === "" || (current === false && (begin === "" || eind === ""))) {
         document.getElementById("error-opleidingen").textContent = "Alle velden zijn vereist.";
         return;
     }
@@ -147,6 +149,7 @@ function addEducation() {
     document.getElementById("error-opleidingen").textContent = ""; // Reset foutmelding
 }
 
+// Functie om werkervaring toe te voegen
 function addJob() {
     const werkgever = document.getElementById("werkgever").value.trim();
     const functie = document.getElementById("werk-functie").value.trim();
@@ -155,7 +158,7 @@ function addJob() {
     const current = document.getElementById("current-job").checked;
     const beschrijving = document.getElementById("werk-beschrijving").value.trim();
 
-    if (werkgever === "" || functie === "" || (current === false && startdatum === "" && einddatum === "") || beschrijving === "") {
+    if (werkgever === "" || functie === "" || (current === false && (startdatum === "" || einddatum === "")) || beschrijving === "") {
         document.getElementById("error-werkervaring").textContent = "Alle velden zijn vereist.";
         return;
     }
@@ -168,4 +171,26 @@ function addJob() {
     document.getElementById("werk-einddatum").value = "";
     document.getElementById("werk-beschrijving").value = "";
     document.getElementById("error-werkervaring").textContent = ""; // Reset foutmelding
+}
+
+// Functie om Excel te genereren en gegevens van het formulier op te slaan
+function generateExcel() {
+    // Haal de waarden van voornaam en achternaam op
+    const voornaam = document.getElementById('naam').value;
+    const achternaam = document.getElementById('achternaam').value;
+
+    // Maak een nieuw workbook en voeg een worksheet toe
+    const workbook = XLSX.utils.book_new();
+
+    // Zet de voornaam in cel A1 en de achternaam in cel B1
+    const worksheet = XLSX.utils.aoa_to_sheet([
+        ['Voornaam', 'Achternaam'], // Header
+        [voornaam, achternaam]      // Waarden in A1 en B1
+    ]);
+
+    // Voeg de worksheet toe aan het workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Blad1");
+
+    // Genereer het Excel-bestand en download het
+    XLSX.writeFile(workbook, 'bestand.xlsx');
 }
