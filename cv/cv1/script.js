@@ -173,24 +173,62 @@ function addJob() {
     document.getElementById("error-werkervaring").textContent = ""; // Reset foutmelding
 }
 
-// Functie om Excel te genereren en gegevens van het formulier op te slaan
-function generateExcel() {
-    // Haal de waarden van voornaam en achternaam op
-    const voornaam = document.getElementById('naam').value;
-    const achternaam = document.getElementById('achternaam').value;
+async function generateExcel() {
+    // Haal de waarden van de voor- en achternaam op
+    const voornaam = document.getElementById('naam').value.trim();
+    const achternaam = document.getElementById('achternaam').value.trim();
 
-    // Maak een nieuw workbook en voeg een worksheet toe
+    // Controleer of voor- en achternaam zijn ingevuld
+    if (!voornaam || !achternaam) {
+        alert("Vul alstublieft zowel de voornaam als de achternaam in.");
+        return;
+    }
+
+    // Maak een nieuw werkboek en een nieuwe sheet
     const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.aoa_to_sheet([[]]); // Lege sheet maken
 
-    // Zet de voornaam in cel A1 en de achternaam in cel B1
-    const worksheet = XLSX.utils.aoa_to_sheet([
-        ['Voornaam', 'Achternaam'], // Header
-        [voornaam, achternaam]      // Waarden in A1 en B1
-    ]);
+    // Zet de breedte van kolommen
+    worksheet['!cols'] = [
+        { wch: 2.86 }, // Kolom A (2.86)
+        { wch: 0 },    // Kolom B (we hoeven hier geen specifieke breedte te zetten)
+        { wch: 2.86 }  // Kolom C (2.86)
+    ];
+
+    // Vul de cellen in
+    worksheet['A1'] = { v: '', s: { fill: { fgColor: { rgb: "FFFFFF" } } } }; // Rij 1, volledig wit
+    worksheet['B1'] = { v: '', s: { fill: { fgColor: { rgb: "000000" } } } }; // Rij 1, kolom B, volledig zwart
+    worksheet['C1'] = { v: '', s: { fill: { fgColor: { rgb: "FFFFFF" } } } }; // Rij 1, volledig wit
+
+    // Voeg de naam toe in cell B3, met stijl
+    const naam = `${voornaam} ${achternaam}`;
+    worksheet['B3'] = {
+        v: naam,
+        s: {
+            alignment: { horizontal: "center" }, // Horizontaal centreren
+            font: { name: "Aptos Black", sz: 36, bold: true } // Font en grootte
+        }
+    };
 
     // Voeg de worksheet toe aan het workbook
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Blad1");
+    XLSX.utils.book_append_sheet(workbook, worksheet, "CV");
 
     // Genereer het Excel-bestand en download het
-    XLSX.writeFile(workbook, 'bestand.xlsx');
+    XLSX.writeFile(workbook, 'CV_Generator.xlsx');
 }
+
+// Voeg hier een functie toe om de knop te activeren
+document.getElementById('download-button').addEventListener('click', generateExcel);
+
+
+
+
+
+
+
+
+
+
+
+
+
