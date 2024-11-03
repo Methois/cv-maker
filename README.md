@@ -1,25 +1,27 @@
-# CV maker by methois
+# CV Maker by Methois
 
+When I wanted to apply for a new job and create a CV, I realized it wasn’t as easy as it seemed! Almost every website that lets you create a professional CV requires a payment. So, I thought: "This can be done differently!" and that’s how this repository came to be.
 
+🚧 **This is a Work in Progress!** It’s not finished yet, but it will be soon ;)
 
-Toen ik wou solliciteren voor een nieuwe baan en een CV wou maken kwam ik er achter dat dat helemaal zo makkelijk nog niet is!
-Voor elke site waar je goed en profesioneel een CV kon maken moest je betalen. Toen dacht ik: Dat kan anders! en daar is deze repo uit gekomen.
+## Demo
 
-🚧・This is a Work in progress! Its not done yet but will be soon ;)
+If you’d like to preview this site before downloading, that’s definitely possible. Here’s a link to the demo:
+[Demo](https://cv.methois.dev/)
 
-# Demo
+## Disclaimer
 
-Als je deze site wilt bekijken voordat je deze download is dat zeker mogelijk. Hieronder is een link naar de demo!
-[Demo]: <https://cv.methois.dev/>
+This site is built as-is, without any variables for customizing names or other details. If you want to change these, you’ll need to dive into the code yourself!
 
-# Disclaimer
+## How to Use This?
 
-Deze site is gemaakt zoals hij is. er zijn geen variable om namen etc aan te passen. Mocht je dit willen doen zou je zelf in de code moeten duiken!
+Since everything is built with HTML, CSS, and JavaScript, it’s easy for almost anyone to run.
 
-# How to use this? 
+## Need Help?
 
-Aangezien alles is gemaakt in HTML/CSS & javascript is dit voor vrijwel iedereen makkelijk te runnen
+Feel free to reach out if you have questions! Add me on Discord (Methois) or send an email to info@methois.dev.
 
-# Need help? 
+---
 
-Feel free to ask your questions by adding methois on discord. or send a mail to info@methois.dev
+**Looking for Help:**
+I’m currently looking for someone who can help with the backend. Interested? Let me know!
