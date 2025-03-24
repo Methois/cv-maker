@@ -6,8 +6,6 @@ When I wanted to apply for a new job and create a CV, I realized it wasn’t as 
 
 🚧 **This is a Work in Progress!** It’s not finished yet, but it will be soon ;)
 
-## Looking for Help
-I’m currently looking for someone who can help with the backend. Interested? Let me know!
 
 ## To-Do List
 
